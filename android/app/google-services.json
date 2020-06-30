@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "766671186851",
+    "firebase_url": "https://naptin-1ef8e.firebaseio.com",
+    "project_id": "naptin-1ef8e",
+    "storage_bucket": "naptin-1ef8e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:766671186851:android:a1856a3a75eaba3c5a8816",
+        "android_client_info": {
+          "package_name": "com.example.naptin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "766671186851-llcp2vokamttqekt2paj9plkagcp2fbi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.naptin",
+            "certificate_hash": "4f3aadbe27f1c820709b4d97cafd9be0c29e2a89"
+          }
+        },
+        {
+          "client_id": "766671186851-6as1t77hl5pqmqvuuhumh740st0sd0o0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAiolSoaGksMbgwaNE9_Z7OSg_GAu59SSw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "766671186851-6as1t77hl5pqmqvuuhumh740st0sd0o0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
