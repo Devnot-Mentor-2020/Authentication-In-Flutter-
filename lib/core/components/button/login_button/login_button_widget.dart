@@ -14,14 +14,18 @@ class LoginButton extends StatelessWidget{
     return buildRaisedButton(context);
   }
   
-  RaisedButton buildRaisedButton(BuildContext context){
-    return RaisedButton(
-      child: buildCenterText(context),
-      onPressed: onPressed,
-      color: backGroundColor,
-      textColor: textColor,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(40)),
+  ButtonTheme buildRaisedButton(BuildContext context){
+    return ButtonTheme(
+      minWidth: MediaQuery.of(context).size.width*0.5,
+      height: MediaQuery.of(context).size.width*0.13,
+      child: RaisedButton(
+        child: buildCenterText(context),
+        onPressed: onPressed,
+        color: backGroundColor,
+        textColor: textColor,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(40)),
+        ),
       ),
     );
   }

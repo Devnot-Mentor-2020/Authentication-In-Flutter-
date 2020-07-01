@@ -6,6 +6,8 @@ import 'package:naptin/services/auth_base.dart';
 
 class FireBaseAuthService implements AuthBase {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  final _googleSignIn = GoogleSignIn();
+  final _facebookLogin = FacebookLogin();
 
   @override
   Future<User> currentUser() async {
@@ -38,12 +40,8 @@ class FireBaseAuthService implements AuthBase {
   @override
   Future<bool> singOut() async {
     try {
-      final _googleSignIn = GoogleSignIn();
       await _googleSignIn.signOut();
-
-      final _facebookLogin = FacebookLogin();
       await _facebookLogin.logOut();
-
       await _firebaseAuth.signOut();
       return true;
     } catch (e) {
@@ -54,7 +52,6 @@ class FireBaseAuthService implements AuthBase {
 
   @override
   Future<User> singInWithGoogle() async {
-    GoogleSignIn _googleSignIn = GoogleSignIn();
     GoogleSignInAccount _googleUser = await _googleSignIn.signIn();
 
     if (_googleUser != null) {
@@ -74,7 +71,6 @@ class FireBaseAuthService implements AuthBase {
 
   @override
   Future<User> singInWithFacebook() async {
-    final _facebookLogin = FacebookLogin();
     FacebookLoginResult _facebookResult =
         await _facebookLogin.logIn(["public_profile", "email"]);
     switch (_facebookResult.status) {

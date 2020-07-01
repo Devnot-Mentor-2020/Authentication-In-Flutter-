@@ -54,70 +54,76 @@ class _EmailPasswordState extends State<EmailPassword> {
       key: _formKey,
       child: Column(
         children: [
-          Row(
-            children: [
-              FlatButton(
-                  onPressed: () => _stateChange(),
-                  child: Text(
-                    _linkText,
-                    style: TextStyle(color: Colors.red.shade600),
-                  )),
-            ],
-          ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.04,
-          ),
-          Container(
-            child: TextFormField(
-              keyboardType: TextInputType.emailAddress,
-              onSaved: (String input) {
-                _email = input;
-              },
-              decoration: InputDecoration(
-                  errorText: _userModel.emailError != null
-                      ? _userModel.emailError
-                      : null,
-                  hintText: "Email",
-                  suffixIcon: Icon(
-                    Icons.person_outline,
-                    color: Colors.blue,
-                  )),
-            ),
-          ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.03,
-          ),
-          Container(
-            child: TextFormField(
-              onSaved: (String input) {
-                _password = input;
-              },
-              obscureText: true,
-              decoration: InputDecoration(
-                  errorText: _userModel.passwordError != null
-                      ? _userModel.passwordError
-                      : null,
-                  hintText: "Password",
-                  suffixIcon: Icon(
-                    Icons.lock_outline,
-                    color: Colors.blue,
-                  )),
-            ),
-          ),
-          SizedBox(height: MediaQuery.of(context).size.height * 0.03),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.08,
-            width: MediaQuery.of(context).size.width * 0.6,
-            child: LoginButton(
-              backGroundColor: Colors.blue.shade700,
-              onPressed: () => _formSubmit(context),
-              text: _buttonText,
-              textColor: Colors.white,
-            ),
-          )
+          registerOrLogin(),
+          buildSizedBox(context),
+          emailInput(_userModel),
+          buildSizedBox(context),
+          passwordInput(_userModel),
+          buildSizedBox(context),
+          buildLoginButton(context),
         ],
       ),
     );
   }
-}
 
+  LoginButton buildLoginButton(BuildContext context) {
+    return LoginButton(
+          backGroundColor: Colors.blue.shade700,
+          onPressed: () => _formSubmit(context),
+          text: _buttonText,
+          textColor: Colors.white,
+        );
+  }
+
+  TextFormField passwordInput(UserModel _userModel) {
+    return TextFormField(
+          onSaved: (String input) {
+            _password = input;
+          },
+          obscureText: true,
+          decoration: InputDecoration(
+              errorText: _userModel.passwordError != null
+                  ? _userModel.passwordError
+                  : null,
+              hintText: "Password",
+              suffixIcon: Icon(
+                Icons.lock_outline,
+                color: Colors.blue,
+              )),
+        );
+  }
+
+  TextFormField emailInput(UserModel _userModel) {
+    return TextFormField(
+          keyboardType: TextInputType.emailAddress,
+          onSaved: (String input) {
+            _email = input;
+          },
+          decoration: InputDecoration(
+              errorText: _userModel.emailError != null
+                  ? _userModel.emailError
+                  : null,
+              hintText: "Email",
+              suffixIcon: Icon(
+                Icons.person_outline,
+                color: Colors.blue,
+              )),
+        );
+  }
+
+  Row registerOrLogin() {
+    return Row(
+          children: [
+            FlatButton(
+                onPressed: () => _stateChange(),
+                child: Text(
+                  _linkText,
+                  style: TextStyle(color: Colors.red.shade600),
+                )),
+          ],
+        );
+  }
+
+  SizedBox buildSizedBox(BuildContext context) =>
+      SizedBox(height: MediaQuery.of(context).size.height * 0.03);
+}
