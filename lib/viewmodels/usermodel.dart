@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:naptin/locator.dart';
-import 'package:naptin/model/userModel.dart';
+import 'package:naptin/model/user.dart';
 import 'package:naptin/repository/user_repo.dart';
 import 'package:naptin/services/auth_base.dart';
 

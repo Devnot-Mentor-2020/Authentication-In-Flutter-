@@ -1,4 +1,4 @@
-import 'package:naptin/model/userModel.dart';
+import 'package:naptin/model/user.dart';
 
 abstract class AuthBase{
  Future<User> currentUser();

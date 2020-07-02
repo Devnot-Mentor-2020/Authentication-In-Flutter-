@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:naptin/core/components/button/login_button/login_button_widget.dart';
-import 'package:naptin/model/userModel.dart';
+import 'package:naptin/model/user.dart';
 import 'package:naptin/viewmodels/usermodel.dart';
 import 'package:provider/provider.dart';
 

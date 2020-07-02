@@ -1,16 +1,16 @@
-import 'package:naptin/model/userModel.dart';
+import 'package:naptin/model/user.dart';
 import 'package:naptin/services/auth_base.dart';
 
 class FakeAuthService implements AuthBase{
   String userID="123123123";
   @override
   Future<User> currentUser() async {
-    return User(userID: userID);
+    return User(userID: userID,email:"deneme@deneme.com" );
   }
 
   @override
   Future<User> singInAnonymously()async {
-    return await Future.delayed(Duration(seconds: 2),()=>User(userID: userID));//
+    return await Future.delayed(Duration(seconds: 2),()=>User(userID: userID,email: "anonim@deneme.com"));//
   }
 
   @override

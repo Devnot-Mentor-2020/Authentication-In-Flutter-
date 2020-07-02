@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:naptin/model/userModel.dart';
+import 'package:naptin/model/user.dart';
 import 'package:naptin/services/auth_base.dart';
 
 class FireBaseAuthService implements AuthBase {
@@ -23,7 +23,7 @@ class FireBaseAuthService implements AuthBase {
   User _userFromFirebase(FirebaseUser user) {
     // firebase user, kendi user türüme donuşturucek
     if (user == null) return null;
-    return User(userID: user.uid);
+    return User(userID: user.uid, email: user.email);
   }
 
   @override
@@ -59,9 +59,12 @@ class FireBaseAuthService implements AuthBase {
       if (_googleAuth.idToken != null && _googleAuth.accessToken != null) {
         AuthResult sonuc = await _firebaseAuth.signInWithCredential(
             GoogleAuthProvider.getCredential(
+                
                 idToken: _googleAuth.idToken,
                 accessToken: _googleAuth.accessToken));
+        
         FirebaseUser _user = sonuc.user;
+        
         return _userFromFirebase(_user);
       } else
         return null;
